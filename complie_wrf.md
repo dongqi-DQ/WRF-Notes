@@ -68,9 +68,9 @@
     68. (serial)  69. (smpar)  70. (dmpar)  71. (dm+sm)   INTEL (ifort/icc): KNL MIC
     ```
     Choose **34** for GNU compiler in the UC linux machine. Then choose compile for nesting (**option 1**)  
-    ```Compile for nesting? (1=basic, 2=preset moves, 3=vortex following)```
+    ```Compile for nesting? (1=basic, 2=preset moves, 3=vortex following)```  
     You should see a message here indicating configuration is succesful, but if you see any NETCDF IO error, try this and re-configure:  
-    ```export NETCDF_classic=1```
+    ```export NETCDF_classic=1```  
     Successful configuration generates a configure file `configure.wrf`, where it is necessary to specify the information on the external libraries.  
     (A configuration file will be attached to check)  
     
