@@ -97,3 +97,7 @@
     ==========================================================================
 
    ```
+ 
+# Compile WPS v4.2
+  
+WPS v4.2 is availabel to download [here](https://github.com/wrf-model/WPS/releases)
