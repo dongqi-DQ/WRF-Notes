@@ -101,3 +101,4 @@
 # Compile WPS v4.2
   
 WPS v4.2 is availabel to download [here](https://github.com/wrf-model/WPS/releases)
+Download geo-static files [here](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
