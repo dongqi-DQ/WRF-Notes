@@ -4,7 +4,7 @@
 (based on a [WRF V3.8 guide](https://www.enviroware.com/installing-and-running-wrf-3-8-on-linux-ubuntu-lts-16-04-with-intel-i7-8-core-cpu/))
 
 1. Begining with WRF V4.0, WRF source code download is available [here](https://github.com/wrf-model/WRF/releases)   
-2. Unzip the file ```WRF-4.2.tar.gz``` 
+2. Unzip the file `WRF-4.2.tar.gz` 
   ```
   tar xvzf WRF-4.2.tar.gz
   ```
@@ -67,11 +67,11 @@
     64. (serial)  65. (smpar)  66. (dmpar)  67. (dm+sm)   INTEL (ifort/icc): HSW/BDW
     68. (serial)  69. (smpar)  70. (dmpar)  71. (dm+sm)   INTEL (ifort/icc): KNL MIC
     ```
-    Choose **34** for GNU compiler in the UC linux machine. Then choose compile for nesting (**option 1**)
+    Choose **34** for GNU compiler in the UC linux machine. Then choose compile for nesting (**option 1**)  
     ```Compile for nesting? (1=basic, 2=preset moves, 3=vortex following)```
-    You should see a message here indicating configuration is succesful, but if you see any NETCDF IO error, try this and re-configure:
+    You should see a message here indicating configuration is succesful, but if you see any NETCDF IO error, try this and re-configure:  
     ```export NETCDF_classic=1```
-    Successful configuration generates a configure file ``configure.wrf``, where it is necessary to specify the information on the external libraries.  
+    Successful configuration generates a configure file `configure.wrf`, where it is necessary to specify the information on the external libraries.  
     (A configuration file will be attached to check)  
     
 6. Compile WRF
@@ -82,7 +82,7 @@
    ```
    tail -f compile.log 
    ```
-   A successful compilation should give you a message in the end of ```compile.log``` like:  
+   A successful compilation should give you a message in the end of `compile.log` like:  
    ```
    ==========================================================================
     build started:   xxxx
