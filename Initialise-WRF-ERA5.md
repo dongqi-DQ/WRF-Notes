@@ -61,12 +61,12 @@ For further details please refer to [this article](https://dreambooker.site/2018
     ```
       This gives intermediate files like ``FILE:yyyy-mm-dd_HH``.  
       
-  3.4 now process uisng [`calc_ecmwf_p.exe`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/calc_ecmwf_p.exe) for ERA5 initialisation to get intermediate files ``PRES:yyyy-mm-dd_HH``.
+  3.4 now process uisng [`calc_ecmwf_p.exe`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/calc_ecmwf_p.exe) for ERA5 initialisation to get intermediate files ``PRES:yyyy-mm-dd_HH``. This requires `prefix = 'PRES',` in `namelist.wps`.
   ```bash
      ./calc_ecmwf_p.exe
   ```
 4. **metgrid**  
-4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'`
+4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`
     ```bash
      ./metgrid.exe
     ```
