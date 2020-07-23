@@ -36,7 +36,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
   - all datetime stamps match with desired simulation period  
   - all domain sizes are correct
 
-2.  ###geogrid  
+2.  **geogrid**  
   Run `geogrid.exe` (skip this step if `geogrid` has been run before and no domain configuration needs to be changed)
   ```bash
    ./geogrid.exe
@@ -44,7 +44,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
 
   Outputs should be `geo_em.d0*.nc` containing all geostatic information to run WRF.
 
-3. ###ungrib  
+3. **ungrib**  
   3.1 link ERA5 girb1 data to WPS directory (recommend to put grib and grib1 files in separate folders)
     ```bash
       ./link_grib.csh path_to_data
@@ -65,7 +65,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
   ```bash
      ./calc_ecmwf_p.exe
   ```
-4. ###metgrid  
+4. **metgrid**  
 4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'`
     ```bash
      ./metgrid.exe
