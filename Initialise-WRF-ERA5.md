@@ -61,7 +61,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
     ```
       This gives intermediate files like ``FILE:yyyy-mm-dd_HH``.  
       
-  3.4 now process uisng [`calc_ecmwf_p.exe`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/calc_ecmwf_p.exe) for ERA5 initialisation to get intermediate files ``PRES:yyyy-mm-dd_HH``. This requires a ecmwf coeff table [`ecmwf_coeff`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/ecmwf_coeffs)
+  3.4 now process uisng [`calc_ecmwf_p.exe`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/calc_ecmwf_p.exe) for ERA5 initialisation to get intermediate files ``PRES:yyyy-mm-dd_HH``. This requires a ecmwf coeff table [`ecmwf_coeff`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/ecmwf_coeffs)  
    **Note: Do NOT run ungrib for PRES files!!**
   ```
   0 0.000000 0.00000000  
