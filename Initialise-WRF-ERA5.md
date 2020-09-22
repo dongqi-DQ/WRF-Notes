@@ -47,7 +47,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
 3. **ungrib**  
   3.1 link ERA5 girb1 data to WPS directory (recommend to put grib and grib1 files in separate folders)  
     ```
-      ./link_grib.csh path_to_data
+      ./link_grib.csh path_to_data/files
     ```
   
   3.2 link [Vtabel.ERA5](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/Vtable.ERA5) so that ungrib can understand ERA5 data  
@@ -57,7 +57,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
   
   3.3 run ungrib with `prefix = 'FLIE',` in `namelist.wps`:    
     ```
-     ./ungrib.exe
+     ./ungrib/ungrib.exe
     ```
       This gives intermediate files like ``FILE:yyyy-mm-dd_HH``.  
       
@@ -205,12 +205,14 @@ For further details please refer to [this article](https://dreambooker.site/2018
   ```
   Then run `*/WPS/util/calc_ecmwf_p.exe`
   ```
-     ./calc_ecmwf_p.exe
+     ./util/calc_ecmwf_p.exe
   ```
+!!!TO DO!!!  
+ add documentation for SST update   
 4. **metgrid**  
 4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`  
     ```
-     ./metgrid.exe
+     ./metgrid/metgrid.exe
     ```
    To avoid possible errors and warnings, modify the interpolation methods in the metgrid table [`METGRID.TBL`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/METGRID.TBL.ARW.ERA5)
    Outputs files: `met_em.d0*.yyyy-mm-dd_HH:MM:SS.nc`
