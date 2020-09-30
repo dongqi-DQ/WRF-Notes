@@ -59,10 +59,16 @@ done
 ```
 
 
-## Step 2: SST data
-<optional?>  
-GFS has SST product.
+## Step 2: Run Geogrid
 
-## Step 3: Run WPS
+## Step 3: Run Ungrib
 
-This is easier than ERA5. Not too much preprocessing needed.
+GFS has SST product. 
+
+1. Link to Vtable.SST
+2. Change WPS namelist
+3. run ungrib
+
+## Step 4: Run Metgrid
+
+## Step 5: Run WRF
