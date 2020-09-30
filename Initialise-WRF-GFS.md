@@ -60,6 +60,12 @@ done
 
 
 ## Step 2: SST data
-<optional?>
+<optional?>  
+
+NCEP SST was discontinued on Feb. 11, 2020. Here is a forum talking about replacements: https://github.com/wrf-model/WRF/issues/1159
+
+A good replacement we found is NASA JPL SST (Sea Surface Temperature) dataset, whic is available from  June 1st, 2002 to the present. UC team already has a (kinda) [technical documentation](https://wiki.canterbury.ac.nz/display/UCHPC/Using+MUR+SST+data+to+nudge+WRF+simulations) for using NASA SST to run WRF. I will replicate the process and write something here.  
 
 ## Step 3: Run WPS
+
+This is easier than ERA5. Not too much preprocessing needed.
