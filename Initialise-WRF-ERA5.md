@@ -208,7 +208,38 @@ For further details please refer to [this article](https://dreambooker.site/2018
      ./util/calc_ecmwf_p.exe
   ```
 !!!TO DO!!!  
- add documentation for SST update   
+ add documentation for SST update 
+ 
+NCEP SST was discontinued on Feb. 11, 2020. Here is a forum talking about replacements: https://github.com/wrf-model/WRF/issues/1159
+
+A good replacement we found is NASA JPL SST (Sea Surface Temperature) dataset, whic is available from  June 1st, 2002 to the present. UC team already has a (kinda) [technical documentation](https://wiki.canterbury.ac.nz/display/UCHPC/Using+MUR+SST+data+to+nudge+WRF+simulations) for using NASA SST to run WRF. I will replicate the process and write something here.  
+
+
+
+The following Drive API Credentials should be used when developing scripts to access or download files from the PO.DAAC Drive API.
+
+The Drive API password is different than your Earthdata Login password.
+
+Click the '?' for the FAQ to see examples of scripted API access, which include your Drive-specific login credentials.
+Your PO.DAAC Drive API Credentials (WebDAV)
+
+https://blog.sleeplessbeastie.eu/2017/09/04/how-to-mount-webdav-share/
+
+```
+Install required software
+
+Install davfs2 package to mount WebDAV resource as regular file system.
+
+$ sudo apt-get install davfs2
+
+Mount WebDAV share using command-line
+
+Create the mountpoint directory.
+
+$ sudo mkdir /mnt/dav
+
+```
+
 4. **metgrid**  
 4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`  
     ```
