@@ -75,6 +75,8 @@ The Drive API password is different than your Earthdata Login password.
 Click the '?' for the FAQ to see examples of scripted API access, which include your Drive-specific login credentials.
 Your PO.DAAC Drive API Credentials (WebDAV)
 
+https://blog.sleeplessbeastie.eu/2017/09/04/how-to-mount-webdav-share/
+
 ```
 Install required software
 
