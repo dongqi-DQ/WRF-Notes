@@ -75,7 +75,20 @@ The Drive API password is different than your Earthdata Login password.
 Click the '?' for the FAQ to see examples of scripted API access, which include your Drive-specific login credentials.
 Your PO.DAAC Drive API Credentials (WebDAV)
 
+```
+Install required software
 
+Install davfs2 package to mount WebDAV resource as regular file system.
+
+$ sudo apt-get install davfs2
+
+Mount WebDAV share using command-line
+
+Create the mountpoint directory.
+
+$ sudo mkdir /mnt/dav
+
+```
 
 ## Step 3: Run WPS
 
