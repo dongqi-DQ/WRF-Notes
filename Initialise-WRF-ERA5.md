@@ -30,6 +30,8 @@ For further details please refer to [this article](https://dreambooker.site/2018
    
 **Tips:** if you wish to preview the files, [panoply](https://www.giss.nasa.gov/tools/panoply/) is a quite handy tool.
 
+3. Static Data are available from [WRF User page](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
+
 ## Step 2: Process with WPS
 
 1. Edit `namelist.wps` to make sure  
