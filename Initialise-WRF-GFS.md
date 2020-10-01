@@ -30,8 +30,8 @@ https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25
 
 This URL contains different parts:
 
-- file=gfs.t00z.pgrb2.0p25.f000 – this is the base file name: model GFS, forecast initial time 00Z, grb2 format, forecast hour is 000. The forecast hour is what we want to change.
-- dir=%2Fgfs.20200929%2F00 – this is the year, month, day and hour of the forecast initial time. All forecast data are inside this directory.
+- **file=gfs.t00z.pgrb2.0p25.f000** – this is the base file name: model GFS, forecast initial time 00Z, grb2 format, forecast hour is 000. The forecast hour is what we want to change.
+- **dir=%2Fgfs.20200929%2F00** – this is the year, month, day and hour of the forecast initial time. All forecast data are inside this directory.
 - We don’t want to change the rest of the URL: forecast model, level, variables, subregion. If you want to change these, go through the grib_filter web page again and get a new URL.
 
 If we want to download multiple forecast hours for the same forecast initial time, we could do so with a bash script like this:
