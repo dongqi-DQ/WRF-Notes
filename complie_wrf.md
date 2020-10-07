@@ -1,4 +1,7 @@
-# Compile WRF - V4.2  
+# Compile WRF - V4.2
+
+<**Note**: there may be one library - netcdf fortran (lnetcdff) needs to be installed mannually>
+
 ## Using GNU  
 
 (based on a [WRF V3.8 guide](https://www.enviroware.com/installing-and-running-wrf-3-8-on-linux-ubuntu-lts-16-04-with-intel-i7-8-core-cpu/))
@@ -97,8 +100,158 @@
     ==========================================================================
 
    ```
+
+Once the compilation completes, to check whether it was successful, you need to look for executables in the WRF/main directory:
+```
+    ls -ls main/*.exe
+```
+If you compiled a real case, you should see:
+```
+    wrf.exe (model executable)
+    real.exe (real data initialization)
+    ndown.exe (one-way nesting)
+    tc.exe (for tc bogusing--serial only) 
+```
+If you compiled an idealized case, you should see:
+```
+    wrf.exe (model executable)
+    ideal.exe (ideal case initialization) 
+```
+These executables are linked to 2 different directories:
+```
+    WRF/run
+    WRF/test/em_real
+```
+You can choose to run WRF from either directory. 
  
 # Compile WPS v4.2
   
 WPS v4.2 is available to download [here](https://github.com/wrf-model/WPS/releases)  
-Download geo-static files [here](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
+<remove this later> Download geo-static files [here](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
+
+Decompress the file:
+```
+tar -ztfv WPSV4.2.TAR.gz
+```
+
+Go to `WPS-4.2`, edit the `config` file to make sure the WRF directory name is included:
+```
+154      standard_wrf_dirs="WRF WRF-4.0.3 WRF-4.0.2 WRF-4.0.1 WRF-4.0 WRFV3 WRF-4.2"
+```
+Note that `WRF-4.2` might not be in the list. 
+
+Again, before configuration, set up environment:
+  - netcdf library
+    ```
+    export NETCDF=/usr/local
+    ```
+  - mpi lib  
+    ```
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/mpich/lib
+    ```
+  - WRF large file support 
+    ```
+    export WRFIO_NCD_LARGE_FILE_SUPPORT=1
+    ```
+
+Now start to configure WPS: `./configure` 
+
+``` 
+Will use NETCDF in dir: /usr/local
+Found what looks like a valid WRF I/O library in ../WRF-4.2
+Found Jasper environment variables for GRIB2 support...
+  $JASPERLIB = /usr/lib/x86_64-linux-gnu
+  $JASPERINC = /usr/include
+------------------------------------------------------------------------
+Please select from among the following supported platforms.
+
+   1.  Linux x86_64, gfortran    (serial)
+   2.  Linux x86_64, gfortran    (serial_NO_GRIB2)
+   3.  Linux x86_64, gfortran    (dmpar)
+   4.  Linux x86_64, gfortran    (dmpar_NO_GRIB2)
+   5.  Linux x86_64, PGI compiler   (serial)
+   6.  Linux x86_64, PGI compiler   (serial_NO_GRIB2)
+   7.  Linux x86_64, PGI compiler   (dmpar)
+   8.  Linux x86_64, PGI compiler   (dmpar_NO_GRIB2)
+   9.  Linux x86_64, PGI compiler, SGI MPT   (serial)
+  10.  Linux x86_64, PGI compiler, SGI MPT   (serial_NO_GRIB2)
+  11.  Linux x86_64, PGI compiler, SGI MPT   (dmpar)
+  12.  Linux x86_64, PGI compiler, SGI MPT   (dmpar_NO_GRIB2)
+  13.  Linux x86_64, IA64 and Opteron    (serial)
+  14.  Linux x86_64, IA64 and Opteron    (serial_NO_GRIB2)
+  15.  Linux x86_64, IA64 and Opteron    (dmpar)
+  16.  Linux x86_64, IA64 and Opteron    (dmpar_NO_GRIB2)
+  17.  Linux x86_64, Intel compiler    (serial)
+  18.  Linux x86_64, Intel compiler    (serial_NO_GRIB2)
+  19.  Linux x86_64, Intel compiler    (dmpar)
+  20.  Linux x86_64, Intel compiler    (dmpar_NO_GRIB2)
+  21.  Linux x86_64, Intel compiler, SGI MPT    (serial)
+  22.  Linux x86_64, Intel compiler, SGI MPT    (serial_NO_GRIB2)
+  23.  Linux x86_64, Intel compiler, SGI MPT    (dmpar)
+  24.  Linux x86_64, Intel compiler, SGI MPT    (dmpar_NO_GRIB2)
+  25.  Linux x86_64, Intel compiler, IBM POE    (serial)
+  26.  Linux x86_64, Intel compiler, IBM POE    (serial_NO_GRIB2)
+  27.  Linux x86_64, Intel compiler, IBM POE    (dmpar)
+  28.  Linux x86_64, Intel compiler, IBM POE    (dmpar_NO_GRIB2)
+  29.  Linux x86_64 g95 compiler     (serial)
+  30.  Linux x86_64 g95 compiler     (serial_NO_GRIB2)
+  31.  Linux x86_64 g95 compiler     (dmpar)
+  32.  Linux x86_64 g95 compiler     (dmpar_NO_GRIB2)
+  33.  Cray XE/XC CLE/Linux x86_64, Cray compiler   (serial)
+  34.  Cray XE/XC CLE/Linux x86_64, Cray compiler   (serial_NO_GRIB2)
+  35.  Cray XE/XC CLE/Linux x86_64, Cray compiler   (dmpar)
+  36.  Cray XE/XC CLE/Linux x86_64, Cray compiler   (dmpar_NO_GRIB2)
+  37.  Cray XC CLE/Linux x86_64, Intel compiler   (serial)
+  38.  Cray XC CLE/Linux x86_64, Intel compiler   (serial_NO_GRIB2)
+  39.  Cray XC CLE/Linux x86_64, Intel compiler   (dmpar)
+  40.  Cray XC CLE/Linux x86_64, Intel compiler   (dmpar_NO_GRIB2)
+
+Enter selection [1-40] : 
+```
+
+<May need to install jasper first for grib I/O>
+
+We are using gfortran and serile compilation is sufficient, so we choose `1.  Linux x86_64, gfortran    (serial)` here. And if everything goes well, you will get: 
+```
+------------------------------------------------------------------------
+Configuration successful. To build the WPS, type: compile
+------------------------------------------------------------------------
+```
+
+Now check `configure.wps` file to make sure all the libraries are correct: 
+```
+WRF_LIB         =       -L$(WRF_DIR)/external/io_grib1 -lio_grib1 \
+                        -L$(WRF_DIR)/external/io_grib_share -lio_grib_share \
+                        -L$(WRF_DIR)/external/io_int -lwrfio_int \
+                        -L$(WRF_DIR)/external/io_netcdf -lwrfio_nf \
+                        -L$(NETCDF)/lib -lnetcdff -lnetcdf
+```
+
+Now WPS is ready to be compiled: 
+```
+./compile >& compile.log &
+```
+
+Use `tail` to check status:
+```
+tail -f compile.log
+```
+
+Once everything is done (successfully), you will see three executables in your WPS directory:
+```
+geogrid.exe -> geogrid/src/geogrid.exe
+ungrib.exe -> ungrib/src/ungrib.exe
+metgrid.exe -> metgrid/src/metgrid.exe 
+```
+
+If any of the exe files are missing, there must be something wrong during configuration or compilation process. NCAR provides a more detailed [tutorial](https://www2.mmm.ucar.edu/wrf/OnLineTutorial/compilation_tutorial.php) which might give you some hints what went wrong.
+
+Now we are ready to run WRF and WPS!
+
+
+
+
+
+
+
+
