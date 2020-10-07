@@ -1,8 +1,8 @@
-# Compile WRF - V4.2
+# Using GNU to compile WRF and WPS
+
+## Compile WRF - V4.2
 
 <**Note**: there may be one library - netcdf fortran (lnetcdff) needs to be installed mannually>
-
-## Using GNU  
 
 (based on a [WRF V3.8 guide](https://www.enviroware.com/installing-and-running-wrf-3-8-on-linux-ubuntu-lts-16-04-with-intel-i7-8-core-cpu/))
 
@@ -124,7 +124,7 @@ These executables are linked to 2 different directories:
 ```
 You can choose to run WRF from either directory. 
  
-# Compile WPS v4.2
+## Compile WPS v4.2
   
 WPS v4.2 is available to download [here](https://github.com/wrf-model/WPS/releases)  
 <remove this later> Download geo-static files [here](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
@@ -153,7 +153,11 @@ Again, before configuration, set up environment:
     ```
     export WRFIO_NCD_LARGE_FILE_SUPPORT=1
     ```
-
+  - Jasper for Grib2 I/O
+    ```
+    export JASPERLIB=/usr/lib/x86_64-linux-gnu
+    export JASPERINC=/usr/include
+    ```
 Now start to configure WPS: `./configure` 
 
 ``` 
@@ -209,7 +213,6 @@ Please select from among the following supported platforms.
 Enter selection [1-40] : 
 ```
 
-<May need to install jasper first for grib I/O>
 
 We are using gfortran and serile compilation is sufficient, so we choose `1.  Linux x86_64, gfortran    (serial)` here. And if everything goes well, you will get: 
 ```
