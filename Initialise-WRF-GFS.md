@@ -86,15 +86,84 @@ Now we have all the data to run WPS and then WRF.
 <WRF domain wizard?>
 
 
+Edit namelist.wps to make sure  
+- all datetime stamps match with desired simulation period  
+- all domain sizes are correct  
+
 ### 2.2 Run geogrid
+Run `geogrid.exe` (skip this step if `geogrid` has been run before and no domain configuration needs to be changed)  
+  ```
+   ./geogrid.exe
+  ```
+
+  Outputs should be `geo_em.d0*.nc` containing all geostatic information to run WRF.
 ### 2.3 Run Ungrib
 
-GFS has SST product. 
+1. link GFS grib2 data to WPS directory
+    ```
+      ./link_grib.csh path_to_data/files
+    ```
+  
+2. link Vtabel.ARW so that ungrib can understand GFS data  
+    ```
+      ln -sf Vtable.GFS Vtable
+    ```
+  
+3. run ungrib with `prefix = 'FLIE',` in `namelist.wps`:    
+    ```
+     ./ungrib/ungrib.exe
+    ```
+      This gives intermediate files like ``FILE:yyyy-mm-dd_HH``.  
 
-1. Link to Vtable.SST
-2. Change WPS namelist
-3. run ungrib
+4. link `Vtable.SST` for SST from GFS:
+ ```
+      ln -sf Vtable.SST Vtable
+   ```
+5. run ungrib with `prefix = 'SST',` in `namelist.wps`:    
+    ```
+     ./ungrib/ungrib.exe
+    ```
+      This gives intermediate files like ``SST:yyyy-mm-dd_HH``.  
+
 
 ### 2.4: Run Metgrid
 
+1. link to the correct `METGRID.TBL`:
+  ```
+  ln -sf METGRID.TBL.ARW METGRID.TBL
+  ```
+
+2. run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`  
+    ```
+     ./metgrid/metgrid.exe
+    ```
+Outputs files: `met_em.d0*.yyyy-mm-dd_HH:MM:SS.nc`
+
 ## Step 3: Run WRF
+
+Go to WRF directory:
+```
+cd ../WRF/run
+```
+link all `met_em` files to run directory:
+```
+ln -sf ../WPS/met_em.d0* .
+```
+
+edit `namelist.input` and run `real.exe`
+
+check `rsl.error.0000` to make sure no error occured:
+```
+d01 2020-09-30_00:00:00 real_em: SUCCESS COMPLETE REAL_EM INIT
+```
+
+Then run WRF with MPI: 
+```
+time mpirun -np 8 ./wrf.exe &
+```
+
+Use `tail` to check run status:
+```
+tail -f rsl.error.0000
+```
+
