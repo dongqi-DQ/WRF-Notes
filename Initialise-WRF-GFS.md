@@ -133,7 +133,7 @@ Run `geogrid.exe` (skip this step if `geogrid` has been run before and no domain
   ln -sf METGRID.TBL.ARW METGRID.TBL
   ```
 
-2. run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`  
+2. run `metgrid.exe` with `Prefix='FILE', 'SST',` in `namelist.wps`  
     ```
      ./metgrid/metgrid.exe
     ```
