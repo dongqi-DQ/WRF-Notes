@@ -13,8 +13,16 @@
   ```
 3. Install required software as described in the [WRF V3.8 guide](https://www.enviroware.com/installing-and-running-wrf-3-8-on-linux-ubuntu-lts-16-04-with-intel-i7-8-core-cpu/)  
   ```
-  sudo apt-get install csh gfortran m4 mpich libhdf5-mpich-dev libpng-dev libjasper-dev libnetcdff-dev netcdf-bin ncl-ncarg
+  sudo apt-get install csh gfortran m4 mpich libhdf5-mpich-dev libpng-dev libnetcdff-dev netcdf-bin ncl-ncarg
   ```
+  install jasper:
+  ```
+  sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+  sudo apt update
+  sudo apt install libjasper1 libjasper-dev
+  ```
+  
+  
 4. Set up environment
   - locate the netcdf library
     ```
