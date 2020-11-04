@@ -27,8 +27,11 @@ For further details please refer to [this article](https://dreambooker.site/2018
    ```
    
    This should give two grib1 files for each day `ecmf_yyyymmdd_an_ml_0.grib1` and `ecmf_yyyymmdd_an_sfc_0.grib1`. 
-   
-**Tips:** if you wish to preview the files, [panoply](https://www.giss.nasa.gov/tools/panoply/) is a quite handy tool.
+**Note:** to use `grib_filter` and `grib_set`, use Anaconda to install ecmwf_grib     
+  ```
+   conda install -c conda-forge ecmwf_grib 
+  ```
+**Tips:** if you wish to preview the grib files, [panoply](https://www.giss.nasa.gov/tools/panoply/) is a quite handy tool.  
 
 3. Static Data are available from [WRF User page](https://www2.mmm.ucar.edu/wrf/users/download/get_sources_wps_geog.html)
 
