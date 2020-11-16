@@ -5,7 +5,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
 ## Step 1: Download data
 
 1. Use [`dl.py`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/dl.py) script to downlaod ERA5 data.  
-  - Define start and end datetime stamp in the following lines:
+  - Specify start and end datetime stamp in the following lines:
   
   ```python
     start_year = 2017
