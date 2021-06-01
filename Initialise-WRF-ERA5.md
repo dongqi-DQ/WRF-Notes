@@ -212,38 +212,20 @@ For further details please refer to [this article](https://dreambooker.site/2018
   ```
      ./util/calc_ecmwf_p.exe
   ```
-!!!TO DO!!!  
- add documentation for SST update 
- 
-NCEP SST was discontinued on Feb. 11, 2020. Here is a forum talking about replacements: https://github.com/wrf-model/WRF/issues/1159
+  
+**optional**  
+The landsea mask and SST from ERA5 have very coarse resolution and may cause  
+1. zero soil temperature or moisture near the coastline
+2. artefacts near coastline in T2 due to the mismatch in grid spacing
+3. other unknown problems...
 
-A good replacement we found is NASA JPL SST (Sea Surface Temperature) dataset, whic is available from  June 1st, 2002 to the present. UC team already has a (kinda) [technical documentation](https://wiki.canterbury.ac.nz/display/UCHPC/Using+MUR+SST+data+to+nudge+WRF+simulations) for using NASA SST to run WRF. I will replicate the process and write something here.  
+I would recommend to add an additional SST data set. 
 
+I will write up a document for NCEP SST. 
 
+Since NCEP SST was discontinued on Feb. 11, 2020. A possible replacement would be NASA SST data set. I will add the link to the document later. 
 
-The following Drive API Credentials should be used when developing scripts to access or download files from the PO.DAAC Drive API.
-
-The Drive API password is different than your Earthdata Login password.
-
-Click the '?' for the FAQ to see examples of scripted API access, which include your Drive-specific login credentials.
-Your PO.DAAC Drive API Credentials (WebDAV)
-
-https://blog.sleeplessbeastie.eu/2017/09/04/how-to-mount-webdav-share/
-
-```
-Install required software
-
-Install davfs2 package to mount WebDAV resource as regular file system.
-
-$ sudo apt-get install davfs2
-
-Mount WebDAV share using command-line
-
-Create the mountpoint directory.
-
-$ sudo mkdir /mnt/dav
-
-```
+**Note:** remember to run `ungrib` with `Prefix=SST` and relink SST Vtable when SST data are used.
 
 4. **metgrid**  
 4.1 run `metgrid.exe` with `Prefix='FILE', 'PRES'` in `namelist.wps`  
@@ -252,6 +234,8 @@ $ sudo mkdir /mnt/dav
     ```
    To avoid possible errors and warnings, modify the interpolation methods in the metgrid table [`METGRID.TBL`](https://github.com/dongqi-DQ/WRF-Notes/blob/master/ERA5_initialisation/METGRID.TBL.ARW.ERA5)
    Outputs files: `met_em.d0*.yyyy-mm-dd_HH:MM:SS.nc`
+
+**Note:** remember to change the `Prefix` when SST data are used.
 
 ## Step 3: Run WRF
 1. link met_em files to `WRF/run` directory  
