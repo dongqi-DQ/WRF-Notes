@@ -213,7 +213,7 @@ For further details please refer to [this article](https://dreambooker.site/2018
      ./util/calc_ecmwf_p.exe
   ```
   
-**optional**  
+**!optional!**  
 The landsea mask and SST from ERA5 have very coarse resolution and may cause  
 1. zero soil temperature or moisture near the coastline
 2. artefacts near coastline in T2 due to the mismatch in grid spacing
