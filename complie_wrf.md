@@ -32,6 +32,10 @@
     ```
     export NETCDF=/usr/local
     ```
+    To avoid NetCDF IO error, set up:
+    ```
+    export export NETCDF_classic=1
+    ```
   - locate the mpi lib  
     ```
     locate mpich/lib
