@@ -1,0 +1,5 @@
+This is supposed to be CMC 
+
+Data source: https://podaac.jpl.nasa.gov/dataset/CMC0.1deg-CMC-L4-GLOB-v3.0
+
+The python script will convert the netcdf to WPS intermediate files for processing.
